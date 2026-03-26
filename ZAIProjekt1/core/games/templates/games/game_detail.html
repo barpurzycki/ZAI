@@ -1,0 +1,29 @@
+{% extends "games/base.html" %}
+
+{% block title %}{{ game.title }}{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h1 class="card-title mb-3">{{ game.title }}</h1>
+
+        <p><strong>Opis:</strong> {{ game.description }}</p>
+        <p><strong>Gatunek:</strong> {{ game.genre }}</p>
+        <p><strong>Producent:</strong> {{ game.producer }}</p>
+        <p><strong>Status:</strong> {{ game.get_status_display }}</p>
+        <p><strong>Data premiery:</strong> {{ game.release_date }}</p>
+        <p><strong>Dodano:</strong> {{ game.created_at }}</p>
+
+        <h5 class="mt-4">Platformy</h5>
+        <ul class="list-group mb-3">
+            {% for platform in game.platforms.all %}
+                <li class="list-group-item">{{ platform.name }}</li>
+            {% empty %}
+                <li class="list-group-item">Brak przypisanych platform</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'game_list' %}" class="btn btn-secondary">Powrót do listy</a>
+    </div>
+</div>
+{% endblock %}
