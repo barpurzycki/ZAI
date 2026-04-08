@@ -1,0 +1,20 @@
+{% extends "games/base.html" %}
+
+{% block title %}Formularz gatunku{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h2 class="mb-4">Formularz gatunku</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success">Zapisz</button>
+                <a href="{% url 'genre_list' %}" class="btn btn-secondary">Anuluj</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

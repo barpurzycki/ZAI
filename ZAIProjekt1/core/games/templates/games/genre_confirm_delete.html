@@ -1,0 +1,20 @@
+{% extends "games/base.html" %}
+
+{% block title %}Usuń gatunek{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h2 class="mb-4">Usuń gatunek</h2>
+        <p>Czy na pewno chcesz usunąć gatunek: <strong>{{ object.name }}</strong>?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-danger">Tak, usuń</button>
+                <a href="{% url 'genre_list' %}" class="btn btn-secondary">Anuluj</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

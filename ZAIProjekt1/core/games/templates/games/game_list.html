@@ -3,7 +3,10 @@
 {% block title %}Lista gier{% endblock %}
 
 {% block content %}
-<h1 class="mb-4">Lista gier</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">Lista gier</h1>
+    <a href="{% url 'game_add' %}" class="btn btn-success">Dodaj grę</a>
+</div>
 
 {% if games %}
     <div class="row g-4">
@@ -21,10 +24,10 @@
                         <p class="card-text mb-1"><strong>Status:</strong> {{ game.get_status_display }}</p>
                         <p class="card-text"><strong>Premiera:</strong> {{ game.release_date }}</p>
                     </div>
-                    <div class="card-footer bg-white">
-                        <a href="{% url 'game_detail' game.pk %}" class="btn btn-primary btn-sm">
-                            Szczegóły
-                        </a>
+                    <div class="card-footer bg-white d-flex gap-2">
+                        <a href="{% url 'game_detail' game.pk %}" class="btn btn-primary btn-sm">Szczegóły</a>
+                        <a href="{% url 'game_edit' game.pk %}" class="btn btn-warning btn-sm">Edytuj</a>
+                        <a href="{% url 'game_delete' game.pk %}" class="btn btn-danger btn-sm">Usuń</a>
                     </div>
                 </div>
             </div>

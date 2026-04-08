@@ -23,7 +23,11 @@
             {% endfor %}
         </ul>
 
-        <a href="{% url 'game_list' %}" class="btn btn-secondary">Powrót do listy</a>
+        <div class="d-flex gap-2">
+            <a href="{% url 'game_list' %}" class="btn btn-secondary">Powrót</a>
+            <a href="{% url 'game_edit' game.pk %}" class="btn btn-warning">Edytuj</a>
+            <a href="{% url 'game_delete' game.pk %}" class="btn btn-danger">Usuń</a>
+        </div>
     </div>
 </div>
 {% endblock %}

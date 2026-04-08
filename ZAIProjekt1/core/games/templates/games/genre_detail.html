@@ -1,0 +1,30 @@
+{% extends "games/base.html" %}
+
+{% block title %}{{ genre.name }}{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h1 class="mb-3">{{ genre.name }}</h1>
+        <p><strong>Opis:</strong> {{ genre.description }}</p>
+        <p><strong>Dodano:</strong> {{ genre.created_at }}</p>
+
+        <h5 class="mt-4">Gry w tym gatunku</h5>
+        <ul class="list-group mb-3">
+            {% for game in genre.games.all %}
+                <li class="list-group-item">
+                    <a href="{% url 'game_detail' game.pk %}" class="text-decoration-none">{{ game.title }}</a>
+                </li>
+            {% empty %}
+                <li class="list-group-item">Brak gier w tym gatunku.</li>
+            {% endfor %}
+        </ul>
+
+        <div class="d-flex gap-2">
+            <a href="{% url 'genre_list' %}" class="btn btn-secondary">Powrót</a>
+            <a href="{% url 'genre_edit' genre.pk %}" class="btn btn-warning">Edytuj</a>
+            <a href="{% url 'genre_delete' genre.pk %}" class="btn btn-danger">Usuń</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "games/base.html" %}
+
+{% block title %}Lista gatunków{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">Lista gatunków</h1>
+    <a href="{% url 'genre_add' %}" class="btn btn-success">Dodaj gatunek</a>
+</div>
+
+{% if genres %}
+    <div class="list-group">
+        {% for genre in genres %}
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <a href="{% url 'genre_detail' genre.pk %}" class="text-decoration-none fw-bold">
+                        {{ genre.name }}
+                    </a>
+                    <div class="text-muted small">{{ genre.description }}</div>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="{% url 'genre_edit' genre.pk %}" class="btn btn-warning btn-sm">Edytuj</a>
+                    <a href="{% url 'genre_delete' genre.pk %}" class="btn btn-danger btn-sm">Usuń</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-secondary">Brak gatunków.</div>
+{% endif %}
+{% endblock %}

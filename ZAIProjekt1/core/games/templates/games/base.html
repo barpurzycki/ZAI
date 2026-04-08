@@ -9,7 +9,13 @@
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'game_list' %}">Katalog gier wideo</a>
+            <a class="navbar-brand" href="{% url 'game_list' %}">Katalog gier</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="{% url 'game_list' %}">Gry</a>
+                <a class="nav-link" href="{% url 'genre_list' %}">Gatunki</a>
+                <a class="nav-link" href="{% url 'game_add' %}">Dodaj grę</a>
+                <a class="nav-link" href="{% url 'genre_add' %}">Dodaj gatunek</a>
+            </div>
         </div>
     </nav>
 
