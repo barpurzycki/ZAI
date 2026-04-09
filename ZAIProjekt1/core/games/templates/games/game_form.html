@@ -3,18 +3,23 @@
 {% block title %}Formularz gry{% endblock %}
 
 {% block content %}
-<div class="card shadow-sm">
+
+<div class="card bg-secondary text-light border-0 shadow-sm">
     <div class="card-body">
+
         <h2 class="mb-4">Formularz gry</h2>
 
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
+
             <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-success">Zapisz</button>
-                <a href="{% url 'game_list' %}" class="btn btn-secondary">Anuluj</a>
+                <button type="submit" class="btn btn-dark">Zapisz</button>
+                <a href="{% url 'game_list' %}" class="btn btn-outline-light">Anuluj</a>
             </div>
         </form>
+
     </div>
 </div>
+
 {% endblock %}

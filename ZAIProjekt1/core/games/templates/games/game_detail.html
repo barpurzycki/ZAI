@@ -3,31 +3,39 @@
 {% block title %}{{ game.title }}{% endblock %}
 
 {% block content %}
-<div class="card shadow-sm">
+
+<div class="card bg-secondary text-light border-0 shadow-sm">
     <div class="card-body">
-        <h1 class="card-title mb-3">{{ game.title }}</h1>
+
+        <h1 class="mb-3">{{ game.title }}</h1>
 
         <p><strong>Opis:</strong> {{ game.description }}</p>
         <p><strong>Gatunek:</strong> {{ game.genre }}</p>
         <p><strong>Producent:</strong> {{ game.producer }}</p>
         <p><strong>Status:</strong> {{ game.get_status_display }}</p>
         <p><strong>Data premiery:</strong> {{ game.release_date }}</p>
-        <p><strong>Dodano:</strong> {{ game.created_at }}</p>
 
         <h5 class="mt-4">Platformy</h5>
-        <ul class="list-group mb-3">
+
+        <ul class="list-group list-group-flush mb-3">
             {% for platform in game.platforms.all %}
-                <li class="list-group-item">{{ platform.name }}</li>
+            <li class="list-group-item bg-dark text-light border-secondary">
+                {{ platform.name }}
+            </li>
             {% empty %}
-                <li class="list-group-item">Brak przypisanych platform</li>
+            <li class="list-group-item bg-dark text-light border-secondary">
+                Brak platform
+            </li>
             {% endfor %}
         </ul>
 
         <div class="d-flex gap-2">
-            <a href="{% url 'game_list' %}" class="btn btn-secondary">Powrót</a>
-            <a href="{% url 'game_edit' game.pk %}" class="btn btn-warning">Edytuj</a>
-            <a href="{% url 'game_delete' game.pk %}" class="btn btn-danger">Usuń</a>
+            <a href="{% url 'game_list' %}" class="btn btn-outline-light">Powrót</a>
+            <a href="{% url 'game_edit' game.pk %}" class="btn btn-secondary">Edytuj</a>
+            <a href="{% url 'game_delete' game.pk %}" class="btn btn-outline-danger">Usuń</a>
         </div>
+
     </div>
 </div>
+
 {% endblock %}
